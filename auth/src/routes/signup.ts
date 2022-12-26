@@ -1,5 +1,7 @@
 import express, { Request, Response } from "express";
 import { body, validationResult } from "express-validator";
+import { RequestValidatnError } from "../errors/req-validation-error";
+import { DatabaseConnectnError } from "../errors/db-conn-err";
 
 const router = express.Router();
 
@@ -16,11 +18,12 @@ router.post(
     const err = validationResult(req);
 
     if (!err.isEmpty()) {
-      throw new Error("email is nt vali");
+      throw new RequestValidatnError(err.array());
     }
     const { email, password } = req.body;
 
     console.log("creatin a user ..");
+    throw new DatabaseConnectnError(err.array());
 
     res.send({});
   }
