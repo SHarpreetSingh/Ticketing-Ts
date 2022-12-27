@@ -3,18 +3,19 @@ kind: Deployment
 metadata: 
   name: auth-depl
 spec:
-  matchLables:
+  replicas: 1
+  selector:
+   matchLabels:
     app: auth
   template:
-    metadata:
-      lables:
-        app:auth
-    spec:
-      containers:
-        - name: auth
-          image: harpreet/auth
+   metadata:
+    labels:
+     app: auth
+   spec:
+    containers:
+     - name: auth
+       image: harpreet11/auth
 ---
-
 apiVersion: v1
 kind: Service
 metadata:

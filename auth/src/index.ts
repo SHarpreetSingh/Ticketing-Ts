@@ -5,6 +5,8 @@ import { json } from "body-parser";
 import { signupRouter } from "./routes/signup";
 import { errHandle } from "./middlewares/error-handlers";
 import { NotFoundError } from "./errors/not-found-err";
+import mongoose  from "mongoose";
+
 
 const app = express();
 app.use(json());
@@ -19,5 +21,5 @@ app.use(errHandle);
 
 const port = 3000;
 app.listen(port, () => {
-  console.log(`🎉 listening on port ${port}`);
+  console.log(`🎉 listening on port ${port}!!!`);
 });
